@@ -38,8 +38,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-
-# --- FUNÇÕES AUXILIARES ---
 # --- FUNÇÕES AUXILIARES ---
 def fmt_br(valor, casas=2):
     try:
