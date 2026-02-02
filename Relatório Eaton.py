@@ -76,7 +76,7 @@ def filtrar_periodo(df, ano, meses):
 
 
 # --- CONFIGURAÇÕES GERAIS ---
-caminho = r"C:\Users\filial.eaton\Desktop\Novo Dashboard\Planilhas\Base de dados (Dashboard).xlsx"
+caminho = "Base de dados (Dashboard).xlsx"
 COR_EATON = "#ea2a33"
 MARGEM_GRAFICO = 1.25
 FATOR_IMPOSTO = 0.7275
