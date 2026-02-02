@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
 import os
 import numpy as np
+import io
 from datetime import datetime, timedelta
 
 # 1. CONFIGURAÇÃO DA PÁGINA
