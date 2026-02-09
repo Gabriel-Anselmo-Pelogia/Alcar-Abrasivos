@@ -22,16 +22,16 @@
     .progress-bg {
         background: #eee;
         border-radius: 10px;
-        height: 12px;
+        height: 12px; /* IMPORTANTE: sem altura, a barra some */
+        width: 100%;
         margin: 15px 0;
-        overflow: hidden;
     }
 
-    .progress-fill {
-        width: {{ porcentagem }};
-        background: {{ cor }};
+   .progress-fill {
+        width: {{ porcentagem }}; /* O valor vindo do Python */
+        background: #27ae60;
         height: 100%;
-        transition: width 1s ease-in-out; /* A barra "corre" quando o valor muda */
+        border-radius: 10px;
     }
 
     .setor-badge {
