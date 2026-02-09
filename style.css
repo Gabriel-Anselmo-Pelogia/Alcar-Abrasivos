@@ -87,3 +87,14 @@
     transform: scale(0.97);
 }
 
+[data-testid="stSidebar"] .stButton > button[kind="secondary"]::before {
+    left: 8px;
+}
+
+[data-testid="stSidebar"] .stButton > button[kind="primary"]::before {
+    left: calc(100% - 48px);
+}
+
+[data-testid="stSidebar"] .stButton > button[kind="primary"] {
+    box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45);
+}
