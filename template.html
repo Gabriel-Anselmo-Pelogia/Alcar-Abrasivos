@@ -1,41 +1,60 @@
 <style>
-    .card-alcar {
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        border-left: 10px solid {{ cor }};
-        font-family: 'Segoe UI', Tahoma, sans-serif;
+    .main-card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-top: 8px solid {{ cor_tema }};
+        font-family: 'Segoe UI', Roboto, sans-serif;
         transition: transform 0.3s ease;
+        margin-top: 20px;
+    }
+    .main-card:hover {
+        transform: translateY(-5px);
+    }
+    .header-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
         margin-bottom: 20px;
     }
-    .card-alcar:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    .icon-box {
+        background: {{ cor_tema }};
+        color: white;
+        padding: 15px;
+        border-radius: 12px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .bar-container {
-        background: #eeeeee;
-        border-radius: 10px;
-        height: 14px;
-        width: 100%;
-        margin: 15px 0;
-        overflow: hidden;
-    }
-    .bar-fill {
-        width: {{ porcentagem }};
-        background: {{ cor }};
-        height: 100%;
-        transition: width 1s ease-in-out;
+    .status-badge {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background: #f0f2f6;
+        color: {{ cor_tema }};
+        font-weight: bold;
+        font-size: 0.85rem;
     }
 </style>
 
-<div class="card-alcar">
-    <div style="color: #666; font-size: 0.9rem;">Bem-vindo, <strong>{{ nome_usuario }}</strong></div>
-    <h2 style="margin: 10px 0; color: #333;">R$ {{ valor }}</h2>
-    <div class="bar-container">
-        <div class="bar-fill"></div>
+<div class="main-card">
+    <div class="header-section">
+        <div class="icon-box">{{ icone }}</div>
+        <div>
+            <h4 style="margin: 0; color: #666;">{{ categoria }}</h4>
+            <div class="status-badge">{{ status_texto }}</div>
+        </div>
     </div>
-    <div style="text-align: right; color: #888; font-size: 0.8rem;">
-        {{ porcentagem }} da meta concluída
+
+    <h2 style="margin: 10px 0; color: #333;">{{ informacao_principal }}</h2>
+    
+    <p style="color: #888; font-size: 0.95rem;">{{ descricao_detalhada }}</p>
+    
+    {% if mostrar_barra %}
+    <div style="background: #eee; height: 10px; border-radius: 5px; margin-top: 15px; overflow: hidden;">
+        <div style="width: {{ progresso }}%; background: {{ cor_tema }}; height: 100%; transition: 1s;"></div>
     </div>
+    {% endif %}
 </div>
