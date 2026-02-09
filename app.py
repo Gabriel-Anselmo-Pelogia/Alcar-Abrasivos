@@ -2,32 +2,27 @@ import streamlit as st
 import pathlib
 from jinja2 import Template
 
-# 1. Configuração da Página
-st.set_page_config(page_title="Alcar Abrasivos", layout="wide")
-
-# 2. Captura da Página Atual via URL (Query Params)
-# Se não houver nada na URL, o padrão é 'analise'
-pagina_atual = st.query_params.get("page", "analise")
-
-# 3. Função para Renderizar o Menu Lateral
 def exibir_menu():
-    # Localiza o arquivo template.html na mesma pasta do app.py
     caminho = pathlib.Path(__file__).parent / "template.html"
     
     try:
         with open(caminho, "r", encoding="utf-8") as f:
             template_puro = f.read()
         
-        # O Jinja2 processa o HTML e decide qual botão recebe a classe 'active'
+        # Renderiza o Jinja2
         template_jinja = Template(template_puro)
         html_final = template_jinja.render(pagina_ativa=pagina_atual)
         
-        # Injetamos o HTML na Sidebar. 
-        # Usamos markdown com unsafe_allow_html para garantir que o CSS seja lido.
-        st.sidebar.markdown(html_final, unsafe_allow_html=True)
+        # LIMPEZA CRUCIAL: Remove quebras de linha para o Streamlit não achar que é Markdown
+        html_limpo = html_final.replace("\n", "").replace("\r", "")
         
-    except FileNotFoundError:
-        st.sidebar.error("Erro: Arquivo 'template.html' não encontrado.")
+        # Injeção na Sidebar com identificador HTML claro
+        st.sidebar.markdown(f"<div>{html_limpo}</div>", unsafe_allow_html=True)
+        
+    except Exception as e:
+        st.sidebar.error(f"Erro ao carregar menu: {e}")
+
+# ... resto do código (configuração de página e lógica de navegação)
 
 # --- EXECUÇÃO DO MENU ---
 exibir_menu()
