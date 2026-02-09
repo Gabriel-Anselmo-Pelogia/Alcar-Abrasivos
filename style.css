@@ -3,19 +3,39 @@
     width: 100% !important;
 }
 
-[data-testid="stSidebar"] .stButton button {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
+/* Força o container do botão */
+[data-testid="stSidebar"] .stButton {
+    width: 100% !important;
+}
+
+/* Força TODOS os níveis internos */
+[data-testid="stSidebar"] .stButton > button {
     width: 100% !important;
     min-width: 100% !important;
     box-sizing: border-box !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
     height: 55px !important;
     border-radius: 30px !important;
     border: none !important;
     padding-left: 25px !important;
     margin-bottom: 8px !important;
     transition: all 0.3s ease !important;
+}
+
+/* Força o texto interno a ocupar tudo */
+[data-testid="stSidebar"] .stButton > button > p {
+    width: 100% !important;
+    margin: 0 !important;
+    text-align: left !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: white !important;
+}
+
 }
 
 
