@@ -1,9 +1,15 @@
 /* 1. ESTILO PARA TODOS OS BOTÕES DA SIDEBAR */
+[data-testid="stSidebar"] .stButton {
+    width: 100% !important;
+}
+
 [data-testid="stSidebar"] .stButton button {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
     height: 55px !important;
     border-radius: 30px !important;
     border: none !important;
@@ -11,6 +17,7 @@
     margin-bottom: 8px !important;
     transition: all 0.3s ease !important;
 }
+
 
 /* 2. BOTÕES NORMAIS (CINZA) - O Streamlit chama de 'secondary' */
 [data-testid="stSidebar"] .stButton button[kind="secondary"] {
