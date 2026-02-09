@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .card {
+            background-color: #1e90ff;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 320px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 220px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #187bcd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <form method="POST">
+            <input type="text" name="nome" placeholder="Digite seu nome" required>
+            <br>
+            <button type="submit">Entrar</button>
+        </form>
+
+        {% if nome %}
+            <div class="card">
+                <h2>Olá, {{ nome }} 👋</h2>
+                <p>Seja muito bem-vindo(a)!</p>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
