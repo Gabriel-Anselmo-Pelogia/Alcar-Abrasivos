@@ -1,57 +1,63 @@
 <style>
-    /* O Card principal */
-    .dashboard-card {
-        background: #ffffff;
-        border-radius: 15px;
-        padding: 25px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        border-left: 10px solid {{ cor }};
-        font-family: 'Segoe UI', sans-serif;
-        transition: all 0.3s ease; /* Faz a transição ser suave */
-        cursor: default;
+    /* O Card principal com transição suave */
+    .card-alcar {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-left: 12px solid {{ cor }};
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 20px;
     }
 
-    /* Efeito de passar o mouse (Hover) */
-    .dashboard-card:hover {
-        transform: translateY(-8px); /* Sobe o card */
-        box-shadow: 0 12px 25px rgba(0,0,0,0.15); /* Aumenta a sombra */
-        background: #fdfdfd;
+    /* Efeito ao passar o mouse */
+    .card-alcar:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
 
     /* Barra de progresso animada */
-    .progress-bg {
+    .bar-container {
         background: #eee;
         border-radius: 10px;
-        height: 12px; /* IMPORTANTE: sem altura, a barra some */
+        height: 14px;
         width: 100%;
-        margin: 15px 0;
+        margin: 20px 0;
+        overflow: hidden;
     }
 
-   .progress-fill {
-        width: {{ porcentagem }}; /* O valor vindo do Python */
-        background: #27ae60;
+    .bar-fill {
+        width: {{ porcentagem }};
+        background: {{ cor }};
         height: 100%;
         border-radius: 10px;
+        transition: width 1s ease-in-out; /* Faz a barra deslizar */
     }
 
-    .setor-badge {
+    .badge {
         background: {{ cor }};
         color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
+        padding: 5px 12px;
+        border-radius: 50px;
         font-size: 0.8rem;
         font-weight: bold;
     }
 </style>
 
-<div class="dashboard-card">
-    <span class="setor-badge">{{ setor }}</span>
-    <h2 style="margin: 10px 0; color: #333;">{{ valor }}</h2>
-    <p style="color: #666; margin: 0;">Progresso da Meta: <strong>{{ porcentagem }}</strong></p>
-    
-    <div class="progress-bg">
-        <div class="progress-fill"></div>
+<div class="card-alcar">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="color: #666;">Bem-vindo, <strong>{{ nome_usuario }}</strong></span>
+        <span class="badge">{{ mensagem }}</span>
     </div>
     
-    <small style="color: #999;">{{ itens }} itens processados hoje</small>
+    <h2 style="margin: 15px 0 5px 0; color: #333;">R$ {{ valor }}</h2>
+    
+    <div class="bar-container">
+        <div class="bar-fill"></div>
+    </div>
+    
+    <div style="text-align: right; color: #888; font-size: 0.9rem;">
+        {{ porcentagem }} da meta concluída
+    </div>
 </div>
