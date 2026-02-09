@@ -11,11 +11,13 @@ pagina_atual = st.query_params.get("page", "analise")
 def exibir_menu():
     caminho = pathlib.Path(__file__).parent / "template.html"
     with open(caminho, "r", encoding="utf-8") as f:
-        html_menu = f.read()
+        template_puro = f.read()
     
-    # Renderiza o bloco INTEIRO de uma vez na sidebar
+    # Passamos a variável 'pagina_atual' para dentro do HTML
+    template = Template(template_puro)
+    html_menu = template.render(pagina_ativa=pagina_atual)
+    
     st.sidebar.markdown(html_menu, unsafe_allow_html=True)
-
 exibir_menu()
 
 # 3. Conteúdo das páginas
