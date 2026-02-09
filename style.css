@@ -1,7 +1,4 @@
-/* Container principal da sidebar para ajuste de alinhamento */
-[data-testid="stSidebarNav"] {display: none;} /* Esconde o menu padrão se houver */
-
-/* Estilo base para TODOS os botões da sidebar */
+/* 1. ESTILO PARA TODOS OS BOTÕES DA SIDEBAR */
 [data-testid="stSidebar"] .stButton button {
     display: flex !important;
     align-items: center !important;
@@ -10,31 +7,37 @@
     height: 55px !important;
     border-radius: 30px !important;
     border: none !important;
-    padding-left: 20px !important;
-    margin-bottom: 5px !important;
-    font-weight: 600 !important;
-    color: white !important;
-    background: linear-gradient(90deg, #bdc3c7, #8e9eab) !important; /* Cinza padrão */
-    transition: all 0.3s ease-in-out !important;
+    padding-left: 25px !important;
+    margin-bottom: 8px !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Efeito de hover */
-[data-testid="stSidebar"] .stButton button:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+/* 2. BOTÕES NORMAIS (CINZA) - O Streamlit chama de 'secondary' */
+[data-testid="stSidebar"] .stButton button[kind="secondary"] {
+    background: linear-gradient(90deg, #bdc3c7, #8e9eab) !important;
     color: white !important;
 }
 
-/* CLASSE DE ATIVAÇÃO: Quando o botão for o selecionado */
-/* No Python, vamos envolver o botão ativo com uma div de classe 'btn-ativo' */
-.btn-ativo .stButton button {
-    background: linear-gradient(90deg, #e52d27, #b31217) !important; /* Vermelho Alcar */
+/* 3. BOTÃO ATIVO (VERMELHO) - O Streamlit chama de 'primary' */
+[data-testid="stSidebar"] .stButton button[kind="primary"] {
+    background: linear-gradient(90deg, #e52d27, #b31217) !important;
+    color: white !important;
     box-shadow: 0 5px 15px rgba(179, 18, 23, 0.4) !important;
+    transform: scale(1.05) !important;
 }
 
-/* Ajuste do texto e ícone dentro do botão */
+/* 4. AJUSTE DO TEXTO E ÍCONE */
 [data-testid="stSidebar"] .stButton button p {
     font-size: 14px !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
     color: white !important;
+}
+
+/* Efeito de passar o mouse em qualquer um */
+[data-testid="stSidebar"] .stButton button:hover {
+    opacity: 0.9 !important;
+    border: none !important;
+}
     margin: 0 !important;
 }
