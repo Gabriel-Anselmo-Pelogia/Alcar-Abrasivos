@@ -30,6 +30,7 @@ with st.sidebar:
 
     # Loop para criar os botões
     for label, icon in menu_items.items():
+        is_active = st.session_state.menu_option == label
         # Verificamos se este botão é o que deve estar "Vermelho"
         if st.session_state.menu_option == label:
             # Envolvemos em uma div que o CSS vai identificar como ATIVA
