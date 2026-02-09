@@ -1,40 +1,40 @@
-/* Container que agrupa o botão para podermos colorir o ativo */
-.btn-container {
-    margin-bottom: -10px; /* Remove o espaçamento excessivo entre botões */
-}
+/* Container principal da sidebar para ajuste de alinhamento */
+[data-testid="stSidebarNav"] {display: none;} /* Esconde o menu padrão se houver */
 
-/* Estilo de todos os botões da Sidebar */
-[data-testid="stSidebar"] div.stButton > button {
+/* Estilo base para TODOS os botões da sidebar */
+[data-testid="stSidebar"] .stButton button {
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important; /* Alinhamento à esquerda */
+    justify-content: flex-start !important;
     width: 100% !important;
-    height: 60px !important;
+    height: 55px !important;
     border-radius: 30px !important;
     border: none !important;
+    padding-left: 20px !important;
+    margin-bottom: 5px !important;
+    font-weight: 600 !important;
     color: white !important;
-    background: linear-gradient(90deg, #bdc3c7, #8e9eab) !important; /* Cinza */
-    padding-left: 25px !important;
-    transition: all 0.3s ease !important;
+    background: linear-gradient(90deg, #bdc3c7, #8e9eab) !important; /* Cinza padrão */
+    transition: all 0.3s ease-in-out !important;
 }
 
-/* Efeito ao passar o mouse */
-[data-testid="stSidebar"] div.stButton > button:hover {
+/* Efeito de hover */
+[data-testid="stSidebar"] .stButton button:hover {
     transform: scale(1.02);
-    opacity: 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    color: white !important;
 }
 
-/* A COR DO BOTÃO ATIVO */
-/* Quando o botão está dentro da div 'btn-ativo', ele vira vermelho */
-.btn-ativo div.stButton > button {
-    background: linear-gradient(90deg, #e52d27, #b31217) !important;
+/* CLASSE DE ATIVAÇÃO: Quando o botão for o selecionado */
+/* No Python, vamos envolver o botão ativo com uma div de classe 'btn-ativo' */
+.btn-ativo .stButton button {
+    background: linear-gradient(90deg, #e52d27, #b31217) !important; /* Vermelho Alcar */
     box-shadow: 0 5px 15px rgba(179, 18, 23, 0.4) !important;
 }
 
-/* Garante que o texto dentro do botão não tenha sublinhado e seja branco */
-[data-testid="stSidebar"] div.stButton > button p {
+/* Ajuste do texto e ícone dentro do botão */
+[data-testid="stSidebar"] .stButton button p {
     font-size: 14px !important;
-    font-weight: 600 !important;
-    margin: 0 !important;
     color: white !important;
+    margin: 0 !important;
 }
