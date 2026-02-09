@@ -1,73 +1,86 @@
 <style>
+    /* Container dos botões */
     .nav-container {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        padding: 10px;
+        gap: 15px;
+        padding: 5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    /* Estilo Base dos Botões (Cinza por padrão) */
     .menu-btn {
         display: flex;
         align-items: center;
         width: 100%;
         height: 60px;
         border-radius: 30px;
-        border: none;
-        color: white !important;
-        text-decoration: none !important;
-        font-family: 'Segoe UI', sans-serif;
+        text-decoration: none !important; /* Remove sublinhado */
+        color: white !important;         /* Texto sempre branco */
         font-weight: 600;
-        cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         
-        /* COR PADRÃO: Cinza suave */
+        /* Gradiente Cinza Neutro */
         background: linear-gradient(90deg, #bdc3c7, #8e9eab);
-        filter: grayscale(100%); /* Garante o tom cinza */
-        opacity: 0.8;
+        opacity: 0.85;
     }
 
-    /* ESTADO SELECIONADO: Vermelho vibrante */
+    /* Efeito de Hover (Passar o mouse) */
+    .menu-btn:hover {
+        transform: scale(1.03);
+        opacity: 1;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Botão SELECIONADO (Vermelho Alcar) */
     .menu-btn.active {
         background: linear-gradient(90deg, #e52d27, #b31217) !important;
-        filter: grayscale(0%);
         opacity: 1;
+        box-shadow: 0 5px 15px rgba(179, 18, 23, 0.4);
         transform: scale(1.05);
-        box-shadow: 0 6px 15px rgba(179, 18, 23, 0.4);
     }
 
+    /* Círculo do Ícone */
     .icon-circle {
-        width: 45px;
-        height: 45px;
+        width: 44px;
+        height: 44px;
         background: white;
         border-radius: 50%;
-        margin-left: 8px;
+        margin-left: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 20px;
-        color: #333;
+        flex-shrink: 0; /* Impede o círculo de achatar */
     }
-    .btn-text { margin-left: 15px; font-size: 14px; }
+
+    /* Texto do Botão */
+    .btn-text {
+        margin-left: 15px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
 </style>
 
 <div class="nav-container">
-    <a href="?page=analise" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'analise' }}">
+    <a href="?page=analise" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'analise' }}">
         <div class="icon-circle">📊</div> <span class="btn-text">Análise de Dados</span>
     </a>
-    
-    <a href="?page=estoque" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'estoque' }}">
+
+    <a href="?page=estoque" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'estoque' }}">
         <div class="icon-circle">📦</div> <span class="btn-text">Gerenciamento de Estoque</span>
     </a>
 
-    <a href="?page=saidas" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'saidas' }}">
+    <a href="?page=saidas" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'saidas' }}">
         <div class="icon-circle">🚚</div> <span class="btn-text">Saídas</span>
     </a>
 
-    <a href="?page=pendencias" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'pendencias' }}">
+    <a href="?page=pendencias" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'pendencias' }}">
         <div class="icon-circle">⏳</div> <span class="btn-text">Pendências</span>
     </a>
 
-    <a href="?page=pv" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'pv' }}">
+    <a href="?page=pv" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'pv' }}">
         <div class="icon-circle">📝</div> <span class="btn-text">Abertura de PV</span>
     </a>
 </div>
