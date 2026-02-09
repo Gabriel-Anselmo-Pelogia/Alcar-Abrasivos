@@ -1,63 +1,41 @@
 <style>
-    /* O Card principal com transição suave */
     .card-alcar {
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        border-left: 12px solid {{ cor }};
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-left: 10px solid {{ cor }};
         font-family: 'Segoe UI', Tahoma, sans-serif;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease;
         margin-bottom: 20px;
     }
-
-    /* Efeito ao passar o mouse */
     .card-alcar:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
-
-    /* Barra de progresso animada */
     .bar-container {
-        background: #eee;
+        background: #eeeeee;
         border-radius: 10px;
         height: 14px;
         width: 100%;
-        margin: 20px 0;
+        margin: 15px 0;
         overflow: hidden;
     }
-
     .bar-fill {
         width: {{ porcentagem }};
         background: {{ cor }};
         height: 100%;
-        border-radius: 10px;
-        transition: width 1s ease-in-out; /* Faz a barra deslizar */
-    }
-
-    .badge {
-        background: {{ cor }};
-        color: white;
-        padding: 5px 12px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: bold;
+        transition: width 1s ease-in-out;
     }
 </style>
 
 <div class="card-alcar">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: #666;">Bem-vindo, <strong>{{ nome_usuario }}</strong></span>
-        <span class="badge">{{ mensagem }}</span>
-    </div>
-    
-    <h2 style="margin: 15px 0 5px 0; color: #333;">R$ {{ valor }}</h2>
-    
+    <div style="color: #666; font-size: 0.9rem;">Bem-vindo, <strong>{{ nome_usuario }}</strong></div>
+    <h2 style="margin: 10px 0; color: #333;">R$ {{ valor }}</h2>
     <div class="bar-container">
         <div class="bar-fill"></div>
     </div>
-    
-    <div style="text-align: right; color: #888; font-size: 0.9rem;">
+    <div style="text-align: right; color: #888; font-size: 0.8rem;">
         {{ porcentagem }} da meta concluída
     </div>
 </div>
