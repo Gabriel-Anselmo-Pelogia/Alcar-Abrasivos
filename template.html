@@ -12,32 +12,29 @@
         height: 60px;
         border-radius: 30px;
         border: none;
-        
-        /* --- ESTES SÃO OS AJUSTES --- */
-        color: white !important;      /* Força a cor branca */
-        text-decoration: none !important; /* Remove o sublinhado */
-        /* ---------------------------- */
-        
+        color: white !important;
+        text-decoration: none !important;
         font-family: 'Segoe UI', sans-serif;
         font-weight: 600;
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        
+        /* COR PADRÃO: Cinza suave */
+        background: linear-gradient(90deg, #bdc3c7, #8e9eab);
+        filter: grayscale(100%); /* Garante o tom cinza */
+        opacity: 0.8;
     }
 
-    /* Garante que ao passar o mouse o sublinhado não volte */
-    .menu-btn:hover {
-        transform: scale(1.03);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-        color: white !important;
-        text-decoration: none !important;
+    /* ESTADO SELECIONADO: Vermelho vibrante */
+    .menu-btn.active {
+        background: linear-gradient(90deg, #e52d27, #b31217) !important;
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(179, 18, 23, 0.4);
     }
 
-    /* Remove a cor de "link visitado" que o navegador coloca */
-    .menu-btn:visited {
-        color: white !important;
-        text-decoration: none !important;
-    }
     .icon-circle {
         width: 45px;
         height: 45px;
@@ -51,29 +48,26 @@
         color: #333;
     }
     .btn-text { margin-left: 15px; font-size: 14px; }
-
-    /* Cores */
-    .btn-analise { background: linear-gradient(90deg, #8e2de2, #4a00e0); }
-    .btn-estoque { background: linear-gradient(90deg, #ff416c, #ff4b2b); }
-    .btn-saidas { background: linear-gradient(90deg, #f2994a, #f2c94c); }
-    .btn-pendencias { background: linear-gradient(90deg, #2193b0, #6dd5ed); }
-    .btn-pv { background: linear-gradient(90deg, #e94057, #f27121); }
 </style>
 
 <div class="nav-container">
-    <a href="?page=analise" target="_self" class="menu-btn btn-analise">
+    <a href="?page=analise" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'analise' }}">
         <div class="icon-circle">📊</div> <span class="btn-text">Análise de Dados</span>
     </a>
-    <a href="?page=estoque" target="_self" class="menu-btn btn-estoque">
+    
+    <a href="?page=estoque" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'estoque' }}">
         <div class="icon-circle">📦</div> <span class="btn-text">Gerenciamento de Estoque</span>
     </a>
-    <a href="?page=saidas" target="_self" class="menu-btn btn-saidas">
+
+    <a href="?page=saidas" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'saidas' }}">
         <div class="icon-circle">🚚</div> <span class="btn-text">Saídas</span>
     </a>
-    <a href="?page=pendencias" target="_self" class="menu-btn btn-pendencias">
+
+    <a href="?page=pendencias" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'pendencias' }}">
         <div class="icon-circle">⏳</div> <span class="btn-text">Pendências</span>
     </a>
-    <a href="?page=pv" target="_self" class="menu-btn btn-pv">
+
+    <a href="?page=pv" target="_self" class="menu-btn {{ 'active' if pagina_ativa == 'pv' }}">
         <div class="icon-circle">📝</div> <span class="btn-text">Abertura de PV</span>
     </a>
 </div>
