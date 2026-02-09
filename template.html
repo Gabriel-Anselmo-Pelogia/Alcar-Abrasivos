@@ -1,85 +1,37 @@
 <style>
-    /* Container dos botões */
-    .nav-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        padding: 5px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    .nav-container { display: flex; flex-direction: column; gap: 12px; padding: 5px; }
+    .menu-btn { 
+        display: flex; align-items: center; width: 100%; height: 60px; border-radius: 30px; 
+        text-decoration: none !important; color: white !important; font-weight: 600; 
+        transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        background: linear-gradient(90deg, #bdc3c7, #8e9eab); opacity: 0.8;
     }
-
-    /* Estilo Base dos Botões (Cinza por padrão) */
-    .menu-btn {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 60px;
-        border-radius: 30px;
-        text-decoration: none !important; /* Remove sublinhado */
-        color: white !important;         /* Texto sempre branco */
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        
-        /* Gradiente Cinza Neutro */
-        background: linear-gradient(90deg, #bdc3c7, #8e9eab);
-        opacity: 0.85;
+    .menu-btn:hover { transform: scale(1.03); opacity: 1; }
+    .menu-btn.active { 
+        background: linear-gradient(90deg, #e52d27, #b31217) !important; 
+        opacity: 1; transform: scale(1.05); box-shadow: 0 5px 15px rgba(179,18,23,0.4); 
     }
-
-    /* Efeito de Hover (Passar o mouse) */
-    .menu-btn:hover {
-        transform: scale(1.03);
-        opacity: 1;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    .icon-circle { 
+        width: 42px; height: 42px; background: white; border-radius: 50%; 
+        margin-left: 10px; display: flex; align-items: center; justify-content: center; 
+        font-size: 20px; flex-shrink: 0; color: #333;
     }
-
-    /* Botão SELECIONADO (Vermelho Alcar) */
-    .menu-btn.active {
-        background: linear-gradient(90deg, #e52d27, #b31217) !important;
-        opacity: 1;
-        box-shadow: 0 5px 15px rgba(179, 18, 23, 0.4);
-        transform: scale(1.05);
-    }
-
-    /* Círculo do Ícone */
-    .icon-circle {
-        width: 44px;
-        height: 44px;
-        background: white;
-        border-radius: 50%;
-        margin-left: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        flex-shrink: 0; /* Impede o círculo de achatar */
-    }
-
-    /* Texto do Botão */
-    .btn-text {
-        margin-left: 15px;
-        font-size: 14px;
-        white-space: nowrap;
-    }
+    .btn-text { margin-left: 12px; font-size: 14px; white-space: nowrap; font-family: sans-serif; }
 </style>
 
 <div class="nav-container">
     <a href="?page=analise" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'analise' }}">
         <div class="icon-circle">📊</div> <span class="btn-text">Análise de Dados</span>
     </a>
-
     <a href="?page=estoque" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'estoque' }}">
         <div class="icon-circle">📦</div> <span class="btn-text">Gerenciamento de Estoque</span>
     </a>
-
     <a href="?page=saidas" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'saidas' }}">
         <div class="icon-circle">🚚</div> <span class="btn-text">Saídas</span>
     </a>
-
     <a href="?page=pendencias" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'pendencias' }}">
         <div class="icon-circle">⏳</div> <span class="btn-text">Pendências</span>
     </a>
-
     <a href="?page=pv" target="_parent" class="menu-btn {{ 'active' if pagina_ativa == 'pv' }}">
         <div class="icon-circle">📝</div> <span class="btn-text">Abertura de PV</span>
     </a>
