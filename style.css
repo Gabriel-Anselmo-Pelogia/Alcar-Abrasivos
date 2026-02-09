@@ -17,19 +17,19 @@
     border-radius: 40px !important;
     border: none !important;
 
-    padding-left: 72px !important; /* espaço do círculo */
+    padding-left: 72px !important;
     padding-right: 20px !important;
 
     display: flex !important;
     align-items: center !important;
 
-    font-size: 14px !important;
-    font-weight: 600 !important;
     color: white !important;
+    font-weight: 600 !important;
 
-    transition: all 0.35s ease !important;
     overflow: hidden;
+    transition: all 0.35s ease !important;
 }
+
 
 /* TEXTO DO BOTÃO */
 [data-testid="stSidebar"] .stButton > button > p {
@@ -60,11 +60,9 @@
     box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45) !important;
 }
 
-/* CÍRCULO NO INÍCIO DO BOTÃO */
 [data-testid="stSidebar"] .stButton > button::before {
     content: "";
     position: absolute;
-    left: 8px;
     top: 50%;
     transform: translateY(-50%);
 
@@ -72,9 +70,10 @@
     height: 40px;
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
 
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.35s ease;
 }
 
 /* HOVER – MOVIMENTO SUAVE */
