@@ -1,15 +1,57 @@
-<div style="
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 50px;
-    border-radius: 20px;
-    text-align: center;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    margin-top: 30px;
-">
-    <h1 style="margin: 0; font-size: 3rem;">👋 Olá!</h1>
-    <p style="font-size: 1.5rem; margin-top: 15px; font-weight: 300;">
-        Bem-vindo, <span style="font-weight: bold; text-decoration: underline;">{{ nome_usuario }}</span>!
-    </p>
+<style>
+    /* O Card principal */
+    .dashboard-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border-left: 10px solid {{ cor }};
+        font-family: 'Segoe UI', sans-serif;
+        transition: all 0.3s ease; /* Faz a transição ser suave */
+        cursor: default;
+    }
+
+    /* Efeito de passar o mouse (Hover) */
+    .dashboard-card:hover {
+        transform: translateY(-8px); /* Sobe o card */
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15); /* Aumenta a sombra */
+        background: #fdfdfd;
+    }
+
+    /* Barra de progresso animada */
+    .progress-bg {
+        background: #eee;
+        border-radius: 10px;
+        height: 12px;
+        margin: 15px 0;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        width: {{ porcentagem }};
+        background: {{ cor }};
+        height: 100%;
+        transition: width 1s ease-in-out; /* A barra "corre" quando o valor muda */
+    }
+
+    .setor-badge {
+        background: {{ cor }};
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+</style>
+
+<div class="dashboard-card">
+    <span class="setor-badge">{{ setor }}</span>
+    <h2 style="margin: 10px 0; color: #333;">{{ valor }}</h2>
+    <p style="color: #666; margin: 0;">Progresso da Meta: <strong>{{ porcentagem }}</strong></p>
+    
+    <div class="progress-bg">
+        <div class="progress-fill"></div>
+    </div>
+    
+    <small style="color: #999;">{{ itens }} itens processados hoje</small>
 </div>
