@@ -12,17 +12,31 @@
         height: 60px;
         border-radius: 30px;
         border: none;
-        color: white;
-        text-decoration: none;
+        
+        /* --- ESTES SÃO OS AJUSTES --- */
+        color: white !important;      /* Força a cor branca */
+        text-decoration: none !important; /* Remove o sublinhado */
+        /* ---------------------------- */
+        
         font-family: 'Segoe UI', sans-serif;
         font-weight: 600;
         cursor: pointer;
         transition: transform 0.2s, box-shadow 0.2s;
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
+
+    /* Garante que ao passar o mouse o sublinhado não volte */
     .menu-btn:hover {
         transform: scale(1.03);
         box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+    /* Remove a cor de "link visitado" que o navegador coloca */
+    .menu-btn:visited {
+        color: white !important;
+        text-decoration: none !important;
     }
     .icon-circle {
         width: 45px;
