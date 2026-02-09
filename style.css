@@ -1,37 +1,40 @@
-/* Remove o design padrão do Streamlit e aplica o visual Alcar */
-div.stButton > button {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    height: 60px;
+/* Container que agrupa o botão para podermos colorir o ativo */
+.btn-container {
+    margin-bottom: -10px; /* Remove o espaçamento excessivo entre botões */
+}
+
+/* Estilo de todos os botões da Sidebar */
+[data-testid="stSidebar"] div.stButton > button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Alinhamento à esquerda */
+    width: 100% !important;
+    height: 60px !important;
     border-radius: 30px !important;
     border: none !important;
     color: white !important;
-    font-weight: 600 !important;
     background: linear-gradient(90deg, #bdc3c7, #8e9eab) !important; /* Cinza */
+    padding-left: 25px !important;
     transition: all 0.3s ease !important;
-    margin-bottom: 10px;
-    padding-left: 20px !important;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Hover: Botão cresce levemente */
-div.stButton > button:hover {
+/* Efeito ao passar o mouse */
+[data-testid="stSidebar"] div.stButton > button:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    border: none !important;
+    opacity: 1;
 }
 
-/* Quando o botão está selecionado (usamos uma div pai no Python) */
+/* A COR DO BOTÃO ATIVO */
+/* Quando o botão está dentro da div 'btn-ativo', ele vira vermelho */
 .btn-ativo div.stButton > button {
-    background: linear-gradient(90deg, #e52d27, #b31217) !important; /* Vermelho */
-    box-shadow: 0 5px 15px rgba(179, 18, 23, 0.4);
-    transform: scale(1.05);
+    background: linear-gradient(90deg, #e52d27, #b31217) !important;
+    box-shadow: 0 5px 15px rgba(179, 18, 23, 0.4) !important;
 }
 
-/* Ajuste do texto dentro do botão */
-div.stButton > button p {
-    font-size: 16px !important;
+/* Garante que o texto dentro do botão não tenha sublinhado e seja branco */
+[data-testid="stSidebar"] div.stButton > button p {
+    font-size: 14px !important;
+    font-weight: 600 !important;
     margin: 0 !important;
+    color: white !important;
 }
