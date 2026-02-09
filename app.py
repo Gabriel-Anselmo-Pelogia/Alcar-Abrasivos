@@ -31,7 +31,7 @@ contexto = {
 # Renderização (lendo seu arquivo template.html)
 with open("template.html", "r", encoding="utf-8") as f:
     t = Template(f.read())
-    st.markdown(t.render(**contexto), unsafe_allow_html=True)
+    st.markdown(html_final, unsafe_allow_html=True)
 
 # --- GRÁFICOS (Streamlit Nativo ou Plotly) ---
 # Você pode colocar gráficos logo abaixo dos seus cards HTML
