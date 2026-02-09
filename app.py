@@ -18,8 +18,7 @@ if 'menu_option' not in st.session_state:
 with st.sidebar:
     st.markdown("### 🏢 Menu Principal")
     st.write("---")
-    
-    # Dicionário de opções: Nome -> Ícone
+
     menu_items = {
         "Análise de Dados": "📊",
         "Gerenciamento de Estoque": "📦",
@@ -28,21 +27,20 @@ with st.sidebar:
         "Abertura de PV": "📝"
     }
 
-    # Loop para criar os botões
-  for label, icon in menu_items.items():
-    is_active = st.session_state.menu_option == label
+    for label, icon in menu_items.items():
+        is_active = st.session_state.menu_option == label
 
-    col = st.sidebar.columns([1])[0]
+        col = st.sidebar.columns([1])[0]
 
-    with col:
-        if st.button(
-            f"{icon}  {label}",
-            key=label,
-            type="primary" if is_active else "secondary",
-            use_container_width=True
-        ):
-            st.session_state.menu_option = label
-            st.rerun()
+        with col:
+            if st.button(
+                f"{icon}  {label}",
+                key=label,
+                type="primary" if is_active else "secondary",
+                use_container_width=True
+            ):
+                st.session_state.menu_option = label
+                st.rerun()
 
 # 5. Lógica de Conteúdo Central
 opcao = st.session_state.menu_option
