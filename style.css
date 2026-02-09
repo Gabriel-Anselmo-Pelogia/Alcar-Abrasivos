@@ -1,0 +1,37 @@
+/* Remove o design padrão do Streamlit e aplica o visual Alcar */
+div.stButton > button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 60px;
+    border-radius: 30px !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    background: linear-gradient(90deg, #bdc3c7, #8e9eab) !important; /* Cinza */
+    transition: all 0.3s ease !important;
+    margin-bottom: 10px;
+    padding-left: 20px !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Hover: Botão cresce levemente */
+div.stButton > button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    border: none !important;
+}
+
+/* Quando o botão está selecionado (usamos uma div pai no Python) */
+.btn-ativo div.stButton > button {
+    background: linear-gradient(90deg, #e52d27, #b31217) !important; /* Vermelho */
+    box-shadow: 0 5px 15px rgba(179, 18, 23, 0.4);
+    transform: scale(1.05);
+}
+
+/* Ajuste do texto dentro do botão */
+div.stButton > button p {
+    font-size: 16px !important;
+    margin: 0 !important;
+}
