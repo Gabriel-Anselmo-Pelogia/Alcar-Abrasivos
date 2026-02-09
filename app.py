@@ -1,23 +1,26 @@
 import streamlit as st
-import pathlib
 
-st.set_page_config(page_title="Alcar Abrasivos", layout="wide")
+# 1. Configuração da página
+st.set_page_config(page_title="Sistema Alcar", layout="wide")
 
-# Função para carregar o CSS
-def load_css(file_name):
+# 2. Carregar o CSS Externo
+def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-load_css("style.css")
+local_css("style.css")
 
-# Estado da página
-if 'pagina' not in st.session_state:
-    st.session_state.pagina = 'Análise de Dados'
+# 3. Inicializar o estado da página (Session State)
+if 'menu_option' not in st.session_state:
+    st.session_state.menu_option = 'Análise de Dados'
 
+# 4. Criar a Barra Lateral
 with st.sidebar:
-    st.title("🏢 Menu Principal")
+    st.markdown("### 🏢 Menu Principal")
+    st.write("---")
     
-    opcoes = {
+    # Dicionário de opções: Nome -> Ícone
+    menu_items = {
         "Análise de Dados": "📊",
         "Gerenciamento de Estoque": "📦",
         "Saídas": "🚚",
@@ -25,32 +28,37 @@ with st.sidebar:
         "Abertura de PV": "📝"
     }
 
-    for nome, icone in opcoes.items():
-        # Verificamos se esta opção é a ativa
-        is_active = st.session_state.pagina == nome
-        
-        # Criamos um container. Se for ativo, adicionamos a classe 'btn-ativo'
-        # Usamos uma f-string para aplicar a classe condicionalmente
-        classe_css = "btn-ativo" if is_active else "btn-container"
-        
-        with st.container():
-            st.markdown(f'<div class="{classe_css}">', unsafe_allow_html=True)
-            if st.button(f"{icone} {nome}", key=f"btn_{nome}"):
-                st.session_state.pagina = nome
-                st.rerun()
+    # Loop para criar os botões
+    for label, icon in menu_items.items():
+        # Verificamos se este botão é o que deve estar "Vermelho"
+        if st.session_state.menu_option == label:
+            # Envolvemos em uma div que o CSS vai identificar como ATIVA
+            st.markdown('<div class="btn-ativo">', unsafe_allow_html=True)
+            if st.button(f"{icon}  {label}", key=label):
+                pass # Já está na página
             st.markdown('</div>', unsafe_allow_html=True)
+        else:
+            # Botão normal (Cinza)
+            if st.button(f"{icon}  {label}", key=label):
+                st.session_state.menu_option = label
+                st.rerun()
 
-# Conteúdo Central
-st.header(f"{st.session_state.pagina}")
+# 5. Lógica de Conteúdo Central
+opcao = st.session_state.menu_option
 
-# 5. Área de Conteúdo
-pag = st.session_state.pagina
+if opcao == "Análise de Dados":
+    st.title("📊 Análise de Dados")
+    st.info("Aqui entrarão seus gráficos e indicadores.")
+    
+elif opcao == "Gerenciamento de Estoque":
+    st.title("📦 Gerenciamento de Estoque")
+    st.success("Tabela de estoque pronta para edição.")
 
-st.divider() # Linha visual
+elif opcao == "Saídas":
+    st.title("🚚 Controle de Saídas")
 
-if pag == "Análise de Dados":
-    st.header("📊 Análise de Dados")
-    # Seu código de análise entra aqui
-elif pag == "Gerenciamento de Estoque":
-    st.header("📦 Gerenciamento de Estoque")
-# ... adicione os demais elifs aqui
+elif opcao == "Pendências":
+    st.title("⏳ Lista de Pendências")
+
+elif opcao == "Abertura de PV":
+    st.title("📝 Formulário de PV")
