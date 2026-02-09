@@ -31,23 +31,25 @@ with st.sidebar:
     # Loop para criar os botões
     for label, icon in menu_items.items():
         is_active = st.session_state.menu_option == label
+        col = st.sidebar.columns([1])[0]  # força largura fixa
         # Verificamos se este botão é o que deve estar "Vermelho"
-        if st.session_state.menu_option == label:
-            # Envolvemos em uma div que o CSS vai identificar como ATIVA
-            st.markdown('<div class="btn-ativo">', unsafe_allow_html=True)
-            if st.button(
-                f"{icon}  {label}",
-                key=label,
-                type="primary" if is_active else "secondary",
-                use_container_width=True
-            ):
-                pass # Já está na página
-            st.markdown('</div>', unsafe_allow_html=True)
-        else:
-            # Botão normal (Cinza)
-            if st.button(f"{icon}  {label}", key=label):
-                st.session_state.menu_option = label
-                st.rerun()
+        with col:
+            if st.session_state.menu_option == label:
+                # Envolvemos em uma div que o CSS vai identificar como ATIVA
+                st.markdown('<div class="btn-ativo">', unsafe_allow_html=True)
+                if st.button(
+                    f"{icon}  {label}",
+                    key=label,
+                    type="primary" if is_active else "secondary",
+                    use_container_width=True
+                ):
+                    pass # Já está na página
+                st.markdown('</div>', unsafe_allow_html=True)
+            else:
+                # Botão normal (Cinza)
+                if st.button(f"{icon}  {label}", key=label):
+                    st.session_state.menu_option = label
+                    st.rerun()
 
 # 5. Lógica de Conteúdo Central
 opcao = st.session_state.menu_option
