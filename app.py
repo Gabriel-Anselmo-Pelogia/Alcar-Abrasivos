@@ -1,21 +1,19 @@
 import streamlit as st
 import pathlib
 
-# 1. Configuração inicial
 st.set_page_config(page_title="Alcar Abrasivos", layout="wide")
 
-# 2. Função para carregar o CSS externo
+# Função para carregar o CSS
 def load_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 load_css("style.css")
 
-# 3. Estado da Navegação (Session State)
+# Estado da página
 if 'pagina' not in st.session_state:
     st.session_state.pagina = 'Análise de Dados'
 
-# 4. Menu Lateral
 with st.sidebar:
     st.title("🏢 Menu Principal")
     
@@ -28,16 +26,22 @@ with st.sidebar:
     }
 
     for nome, icone in opcoes.items():
-        # Se for a página ativa, aplica a classe CSS 'btn-ativo'
-        if st.session_state.pagina == nome:
-            st.markdown('<div class="btn-ativo">', unsafe_allow_html=True)
-            st.button(f"{icone} {nome}", key=nome) # Botão já está ativo
-            st.markdown('</div>', unsafe_allow_html=True)
-        else:
-            # Botão normal (Cinza)
-            if st.button(f"{icone} {nome}", key=nome):
+        # Verificamos se esta opção é a ativa
+        is_active = st.session_state.pagina == nome
+        
+        # Criamos um container. Se for ativo, adicionamos a classe 'btn-ativo'
+        # Usamos uma f-string para aplicar a classe condicionalmente
+        classe_css = "btn-ativo" if is_active else "btn-container"
+        
+        with st.container():
+            st.markdown(f'<div class="{classe_css}">', unsafe_allow_html=True)
+            if st.button(f"{icone} {nome}", key=f"btn_{nome}"):
                 st.session_state.pagina = nome
                 st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
+
+# Conteúdo Central
+st.header(f"{st.session_state.pagina}")
 
 # 5. Área de Conteúdo
 pag = st.session_state.pagina
