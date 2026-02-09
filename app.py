@@ -34,7 +34,12 @@ with st.sidebar:
         if st.session_state.menu_option == label:
             # Envolvemos em uma div que o CSS vai identificar como ATIVA
             st.markdown('<div class="btn-ativo">', unsafe_allow_html=True)
-            if st.button(f"{icon}  {label}", key=label):
+            if st.button(
+                f"{icon}  {label}",
+                key=label,
+                type="primary" if is_active else "secondary",
+                use_container_width=True
+            ):
                 pass # Já está na página
             st.markdown('</div>', unsafe_allow_html=True)
         else:
