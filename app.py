@@ -1,26 +1,35 @@
-from flask import Flask, render_template, request
+import streamlit as st
+from jinja2 import Template
+import pathlib
 
-app = Flask(__name__)
+# Configuração da página
+st.set_page_config(page_title="Teste Visual", layout="centered")
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    nome = None
+st.title("Sistema de Boas-Vindas")
 
-    if request.method == "POST":
-        nome = request.form.get("nome")
+# Campo de entrada no Streamlit
+nome_input = st.text_input("Qual o seu nome?")
 
-    return render_template("index.html", nome=nome)
+# Função para renderizar o HTML
+def renderizar_layout(nome):
+    # Localiza o arquivo na pasta do GitHub
+    caminho_base = pathlib.Path(__file__).parent
+    caminho_html = caminho_base / "template.html"
 
-@app.route("/dashboard")
-def dashboard():
-    dados = [10, 20, 30, 40]
-    labels = ["Jan", "Fev", "Mar", "Abr"]
+    try:
+        with open(caminho_html, "r", encoding="utf-8") as f:
+            template_html = f.read()
+        
+        # O Jinja2 faz a troca do {{ nome_usuario }} pelo nome_input
+        template_renderizado = Template(template_html).render(nome_usuario=nome)
+        
+        # Exibe na tela
+        st.markdown(template_renderizado, unsafe_allow_html=True)
+    except Exception as e:
+        st.error(f"Erro ao carregar o arquivo: {e}")
 
-    return render_template(
-        "dashboard.html",
-        dados=dados,
-        labels=labels
-    )
-
-if __name__ == "__main__":
-    app.run(debug=True)
+# Só mostra o HTML se houver um nome digitado
+if nome_input:
+    renderizar_layout(nome_input)
+else:
+    st.info("Digite um nome acima para ver o estilo HTML.")
