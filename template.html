@@ -1,60 +1,84 @@
 <style>
-    .main-card {
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        border-top: 8px solid {{ cor_tema }};
-        font-family: 'Segoe UI', Roboto, sans-serif;
-        transition: transform 0.3s ease;
-        margin-top: 20px;
+    .nav-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px;
     }
-    .main-card:hover {
-        transform: translateY(-5px);
-    }
-    .header-section {
+
+    /* Estilo base do botão */
+    .menu-btn {
         display: flex;
         align-items: center;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .icon-box {
-        background: {{ cor_tema }};
+        width: 100%;
+        height: 60px;
+        border-radius: 30px; /* Totalmente arredondado */
+        border: none;
         color: white;
-        padding: 15px;
-        border-radius: 12px;
-        font-size: 24px;
+        text-decoration: none;
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+
+    .menu-btn:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    /* O círculo branco do ícone */
+    .icon-circle {
+        width: 45px;
+        height: 45px;
+        background: white;
+        border-radius: 50%;
+        margin-left: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 20px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
     }
-    .status-badge {
-        display: inline-block;
-        padding: 5px 15px;
-        border-radius: 20px;
-        background: #f0f2f6;
-        color: {{ cor_tema }};
-        font-weight: bold;
-        font-size: 0.85rem;
+
+    .btn-text {
+        margin-left: 15px;
+        font-size: 16px;
     }
+
+    /* Cores dos Gradientes (Conforme a imagem) */
+    .btn-analise { background: linear-gradient(90deg, #8e2de2, #4a00e0); }
+    .btn-estoque { background: linear-gradient(90deg, #ff416c, #ff4b2b); }
+    .btn-saidas { background: linear-gradient(90deg, #f2994a, #f2c94c); }
+    .btn-pendencias { background: linear-gradient(90deg, #2193b0, #6dd5ed); }
+    .btn-pv { background: linear-gradient(90deg, #e94057, #f27121); }
 </style>
 
-<div class="main-card">
-    <div class="header-section">
-        <div class="icon-box">{{ icone }}</div>
-        <div>
-            <h4 style="margin: 0; color: #666;">{{ categoria }}</h4>
-            <div class="status-badge">{{ status_texto }}</div>
-        </div>
-    </div>
+<div class="nav-container">
+    <a href="?page=analise" target="_self" class="menu-btn btn-analise">
+        <div class="icon-circle">📊</div>
+        <span class="btn-text">Análise de Dados</span>
+    </a>
+    
+    <a href="?page=estoque" target="_self" class="menu-btn btn-estoque">
+        <div class="icon-circle">📦</div>
+        <span class="btn-text">Gerenciamento de Estoque</span>
+    </a>
 
-    <h2 style="margin: 10px 0; color: #333;">{{ informacao_principal }}</h2>
-    
-    <p style="color: #888; font-size: 0.95rem;">{{ descricao_detalhada }}</p>
-    
-    {% if mostrar_barra %}
-    <div style="background: #eee; height: 10px; border-radius: 5px; margin-top: 15px; overflow: hidden;">
-        <div style="width: {{ progresso }}%; background: {{ cor_tema }}; height: 100%; transition: 1s;"></div>
-    </div>
-    {% endif %}
+    <a href="?page=saidas" target="_self" class="menu-btn btn-saidas">
+        <div class="icon-circle">🚚</div>
+        <span class="btn-text">Saídas</span>
+    </a>
+
+    <a href="?page=pendencias" target="_self" class="menu-btn btn-pendencias">
+        <div class="icon-circle">⏳</div>
+        <span class="btn-text">Pendências</span>
+    </a>
+
+    <a href="?page=pv" target="_self" class="menu-btn btn-pv">
+        <div class="icon-circle">📝</div>
+        <span class="btn-text">Abertura de PV</span>
+    </a>
 </div>
