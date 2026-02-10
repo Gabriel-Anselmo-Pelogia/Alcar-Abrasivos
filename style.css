@@ -63,8 +63,8 @@
 [data-testid="stSidebar"] .stButton > button::before {
     content: "";
     position: absolute;
+    left: 8px;
     top: 50%;
-    transform: translateY(-50%);
 
     width: 40px;
     height: 40px;
@@ -73,7 +73,9 @@
     background: rgba(255, 255, 255, 0.95);
     box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
 
-    transition: all 0.35s ease;
+    transform: translate(0, -50%);
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s ease;
 }
 
 /* HOVER – MOVIMENTO SUAVE */
@@ -88,11 +90,11 @@
 }
 
 [data-testid="stSidebar"] .stButton > button[kind="secondary"]::before {
-    left: 8px;
+    transform: translate(0, -50%);
 }
 
 [data-testid="stSidebar"] .stButton > button[kind="primary"]::before {
-    left: calc(100% - 48px);
+    transform: translate(calc(100% - 56px), -50%);
 }
 
 [data-testid="stSidebar"] .stButton > button[kind="primary"] {
