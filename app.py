@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # Título do sistema
-st.markdown("## Sistema Administrativo")
+
 
 # Painel superior com 5 abas
 aba1, aba2, aba3, aba4, aba5 = st.tabs([
@@ -27,6 +27,7 @@ aba1, aba2, aba3, aba4, aba5 = st.tabs([
 # -------------------------
 with aba1:
     st.subheader("Aba 01")
+    st.markdown("## Sistema Administrativo")
     st.write("Conteúdo da Aba 01")
 
 # -------------------------
