@@ -7,7 +7,7 @@ st.set_page_config(layout="wide")
 if "menu" not in st.session_state:
     st.session_state.menu = "analise"
 
-# Captura clique
+# Captura URL
 params = st.query_params
 if "toggle" in params:
     st.session_state.menu = params["toggle"]
@@ -15,7 +15,7 @@ if "toggle" in params:
 # Lê HTML
 html = Path("frontend/sidebar.html").read_text(encoding="utf-8")
 
-# Injeta atributo data-active
+# Injeta estado visual
 html = html.replace(
     "{{analise}}",
     'data-active="true"' if st.session_state.menu == "analise" else ""
@@ -35,5 +35,5 @@ st.title("Conteúdo")
 
 if st.session_state.menu == "analise":
     st.success("📊 Análise de Dados")
-else:
+elif st.session_state.menu == "estoque":
     st.info("📦 Gerenciamento de Estoque")
