@@ -5,23 +5,27 @@ div[role="radiogroup"] {
     gap: 14px;
 }
 
-/* Label = botão */
+/* Label geral */
 div[role="radiogroup"] label {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* DIV INTERNA = BOTÃO REAL */
+div[role="radiogroup"] label > div {
     width: 100%;
     height: 52px;
 
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 
-    background: #bfbfbf;
+    background: #cfcfcf;
     color: white;
 
-    padding: 0 64px 0 20px;   /* espaço pro círculo à direita */
+    padding: 0 64px 0 20px;
     border-radius: 999px;
 
     font-weight: 600;
-    cursor: pointer;
     position: relative;
 
     white-space: nowrap;
@@ -31,19 +35,19 @@ div[role="radiogroup"] label {
     transition: all 0.25s ease;
 }
 
-/* Botão ativo */
+/* Hover */
+div[role="radiogroup"] label:hover > div {
+    filter: brightness(1.05);
+}
+
+/* ATIVO */
 div[role="radiogroup"] input:checked + div {
     background: linear-gradient(135deg, #ff4b4b, #d92b2b);
     box-shadow: 0 0 30px rgba(255, 75, 75, 0.7);
 }
 
-/* Hover */
-div[role="radiogroup"] label:hover {
-    filter: brightness(1.05);
-}
-
-/* CÍRCULO (toggle) */
-div[role="radiogroup"] label::after {
+/* CÍRCULO À DIREITA */
+div[role="radiogroup"] label > div::after {
     content: "";
     width: 34px;
     height: 34px;
@@ -60,13 +64,7 @@ div[role="radiogroup"] label::after {
     transition: all 0.25s ease;
 }
 
-/* Círculo ativo (efeito leve) */
-div[role="radiogroup"] input:checked + div::after {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-}
-
-/* Esconde o radio nativo */
+/* Radio nativo (círculo da esquerda) — ESCONDE */
 div[role="radiogroup"] input {
     display: none;
 }
-
