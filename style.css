@@ -2,66 +2,71 @@
 div[role="radiogroup"] {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 /* Label = botão */
 div[role="radiogroup"] label {
     width: 100%;
-    height: 48px;
+    height: 52px;
+
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 
-    background: #ef3b3b;
+    background: #bfbfbf;
     color: white;
-    padding: 0 18px 0 52px;   /* espaço pro círculo */
+
+    padding: 0 64px 0 20px;   /* espaço pro círculo à direita */
     border-radius: 999px;
+
     font-weight: 600;
     cursor: pointer;
-
     position: relative;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    box-shadow: 0 0 20px rgba(239, 59, 59, 0.5);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
+}
+
+/* Botão ativo */
+div[role="radiogroup"] input:checked + div {
+    background: linear-gradient(135deg, #ff4b4b, #d92b2b);
+    box-shadow: 0 0 30px rgba(255, 75, 75, 0.7);
 }
 
 /* Hover */
 div[role="radiogroup"] label:hover {
-    box-shadow: 0 0 26px rgba(239, 59, 59, 0.8);
+    filter: brightness(1.05);
 }
 
-/* CÍRCULO (sempre visível) */
-div[role="radiogroup"] label::before {
+/* CÍRCULO (toggle) */
+div[role="radiogroup"] label::after {
     content: "";
-    width: 14px;
-    height: 14px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
 
     position: absolute;
-    left: 18px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
 
-    background: transparent;
-    border: 2px solid white;
-}
-
-/* SELECIONADO */
-div[role="radiogroup"] input:checked + div {
-    background: #d92b2b;
-    box-shadow: 0 0 30px rgba(239, 59, 59, 0.9);
-}
-
-/* CÍRCULO ATIVO */
-div[role="radiogroup"] input:checked + div::before {
     background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+    transition: all 0.25s ease;
 }
 
-/* Esconde o círculo nativo */
+/* Círculo ativo (efeito leve) */
+div[role="radiogroup"] input:checked + div::after {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Esconde o radio nativo */
 div[role="radiogroup"] input {
     display: none;
 }
+
