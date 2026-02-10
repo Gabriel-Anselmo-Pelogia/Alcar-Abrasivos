@@ -11,7 +11,7 @@ div[role="radiogroup"] label {
     cursor: pointer;
 }
 
-/* DIV INTERNA = BOTÃO REAL */
+/* Botão (div interna real do Streamlit) */
 div[role="radiogroup"] label > div {
     width: 100%;
     height: 52px;
@@ -19,8 +19,8 @@ div[role="radiogroup"] label > div {
     display: flex;
     align-items: center;
 
-    background: #cfcfcf;
-    color: white;
+    background: #d6d6d6;
+    color: #ffffff;
 
     padding: 0 64px 0 20px;
     border-radius: 999px;
@@ -32,25 +32,20 @@ div[role="radiogroup"] label > div {
     overflow: hidden;
     text-overflow: ellipsis;
 
-    transition: all 0.25s ease;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Hover */
-div[role="radiogroup"] label:hover > div {
-    filter: brightness(1.05);
-}
-
-/* ATIVO */
+/* Ativo */
 div[role="radiogroup"] input:checked + div {
-    background: linear-gradient(135deg, #ff4b4b, #d92b2b);
-    box-shadow: 0 0 30px rgba(255, 75, 75, 0.7);
+    background: #ef3b3b;
+    box-shadow: 0 0 22px rgba(239, 59, 59, 0.6);
 }
 
-/* CÍRCULO À DIREITA */
+/* Círculo à direita (toggle) */
 div[role="radiogroup"] label > div::after {
     content: "";
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 
     position: absolute;
@@ -58,13 +53,10 @@ div[role="radiogroup"] label > div::after {
     top: 50%;
     transform: translateY(-50%);
 
-    background: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-
-    transition: all 0.25s ease;
+    background: #ffffff;
 }
 
-/* Radio nativo (círculo da esquerda) — ESCONDE */
+/* Remove QUALQUER radio/bolinha nativa */
 div[role="radiogroup"] input {
     display: none;
 }
