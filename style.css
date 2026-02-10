@@ -8,34 +8,23 @@ div[role="radiogroup"] {
 /* Label = botão */
 div[role="radiogroup"] label {
     width: 100%;
-    height: 48px;                /* ALTURA FIXA */
+    height: 48px;
     display: flex;
     align-items: center;
-    justify-content: center;
 
     background: #ef3b3b;
     color: white;
-    padding: 0 16px;             /* REMOVE padding vertical variável */
+    padding: 0 18px 0 52px;   /* espaço pro círculo */
     border-radius: 999px;
     font-weight: 600;
     cursor: pointer;
 
-    white-space: nowrap;         /* NÃO quebra linha */
+    position: relative;
+
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;     /* Trunca se for grande */
+    text-overflow: ellipsis;
 
-    box-shadow: 0 0 20px rgba(239, 59, 59, 0.5);
-    transition: all 0.2s ease;
-}
-
-/* Cada opção */
-div[role="radiogroup"] label {
-    background: #ef3b3b;
-    color: white;
-    padding: 14px;
-    border-radius: 999px;
-    font-weight: 600;
-    cursor: pointer;
     box-shadow: 0 0 20px rgba(239, 59, 59, 0.5);
     transition: all 0.2s ease;
 }
@@ -45,13 +34,34 @@ div[role="radiogroup"] label:hover {
     box-shadow: 0 0 26px rgba(239, 59, 59, 0.8);
 }
 
-/* Selecionado */
+/* CÍRCULO (sempre visível) */
+div[role="radiogroup"] label::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: transparent;
+    border: 2px solid white;
+}
+
+/* SELECIONADO */
 div[role="radiogroup"] input:checked + div {
     background: #d92b2b;
     box-shadow: 0 0 30px rgba(239, 59, 59, 0.9);
 }
 
-/* Esconde círculo padrão */
+/* CÍRCULO ATIVO */
+div[role="radiogroup"] input:checked + div::before {
+    background: white;
+}
+
+/* Esconde o círculo nativo */
 div[role="radiogroup"] input {
     display: none;
 }
