@@ -3,7 +3,6 @@
    Toggle com círculo animado
    ================================ */
 
-/* Container do botão ocupa 100% */
 [data-testid="stSidebar"] .stButton {
     width: 100% !important;
 }
@@ -11,11 +10,16 @@
 /* BOTÃO BASE */
 [data-testid="stSidebar"] .stButton > button {
     position: relative;
-    height: 56px;
     width: 100%;
+    height: 56px;
     padding-left: 64px;
     border-radius: 30px;
     font-weight: 600;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
     transition: background 0.3s ease, filter 0.2s ease;
 }
 
@@ -28,23 +32,18 @@
     text-align: left !important;
 }
 
-/* ESTADO DESLIGADO (CINZA) */
+/* DESLIGADO (CINZA) */
 [data-testid="stSidebar"] .stButton > button[kind="secondary"] {
     background-color: #bfbfbf;
 }
 
-/* ESTADO LIGADO (VERMELHO + GRADIENTE) */
+/* LIGADO (VERMELHO) */
 [data-testid="stSidebar"] .stButton > button[kind="primary"] {
-    background: linear-gradient(
-        90deg,
-        #ef4444,
-        #b91c1c
-    ) !important;
-
+    background: linear-gradient(90deg, #ef4444, #b91c1c) !important;
     box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45) !important;
 }
 
-/* CÍRCULO (TOGGLE) */
+/* CÍRCULO */
 [data-testid="stSidebar"] .stButton > button::before {
     content: "";
     position: absolute;
@@ -63,12 +62,12 @@
                 box-shadow 0.3s ease;
 }
 
-/* CÍRCULO – DESLIGADO (ESQUERDA) */
+/* CÍRCULO – OFF (ESQUERDA) */
 [data-testid="stSidebar"] .stButton > button[kind="secondary"]::before {
     transform: translate(0, -50%);
 }
 
-/* CÍRCULO – LIGADO (DIREITA) */
+/* CÍRCULO – ON (DIREITA) */
 [data-testid="stSidebar"] .stButton > button[kind="primary"]::before {
     transform: translate(64px, -50%);
     box-shadow:
@@ -76,8 +75,7 @@
         0 6px 14px rgba(0, 0, 0, 0.35);
 }
 
-/* HOVER (sem usar transform) */
+/* HOVER */
 [data-testid="stSidebar"] .stButton > button:hover {
     filter: brightness(1.08);
 }
-
