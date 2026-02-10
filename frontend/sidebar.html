@@ -17,6 +17,7 @@
     background: #bfbfbf;
     cursor: pointer;
     user-select: none;
+    text-decoration: none;
 
     transition: background 0.35s ease, filter 0.2s ease;
 }
@@ -52,12 +53,10 @@
 }
 </style>
 
-<div class="toggle-btn" {{analise}}
-     onclick="window.location.search='?toggle=analise'">
+<a href="?toggle=analise" class="toggle-btn" {{analise}}>
     Análise de Dados
-</div>
+</a>
 
-<div class="toggle-btn" {{estoque}}
-     onclick="window.location.search='?toggle=estoque'">
+<a href="?toggle=estoque" class="toggle-btn" {{estoque}}>
     Gerenciamento de Estoque
-</div>
+</a>
