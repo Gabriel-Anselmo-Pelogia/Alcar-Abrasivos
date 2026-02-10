@@ -18,36 +18,22 @@ with st.sidebar:
     if st.button("Gerenciamento de Estoque"):
         st.session_state.menu = "estoque"
 
-# Marca botão ativo
-st.markdown(
-    """
-<script>
-const buttons = parent.document.querySelectorAll(
-    '[data-testid="stSidebar"] div.stButton > button'
-);
+# HTML base
+html = Path("frontend/sidebar.html").read_text(encoding="utf-8")
 
-buttons.forEach(btn => {
-    btn.classList.remove("active");
-
-    if (
-        btn.innerText.includes("Análise") &&
-        "{menu}" === "analise"
-    ) {
-        btn.classList.add("active");
-    }
-
-    if (
-        btn.innerText.includes("Gerenciamento") &&
-        "{menu}" === "estoque"
-    ) {
-        btn.classList.add("active");
-    }
-});
-</script>
-""".format(menu=st.session_state.menu),
-    unsafe_allow_html=True
+# Injeta classe ativa (SEM format, SEM f-string)
+html = html.replace(
+    "{{analise}}",
+    "active" if st.session_state.menu == "analise" else ""
 )
 
+html = html.replace(
+    "{{estoque}}",
+    "active" if st.session_state.menu == "estoque" else ""
+)
+
+# Renderiza HTML estilizado
+st.sidebar.markdown(html, unsafe_allow_html=True)
 
 # Conteúdo
 st.title("Conteúdo")
