@@ -15,7 +15,7 @@ if "toggle" in params:
 # Lê HTML
 html = Path("frontend/sidebar.html").read_text(encoding="utf-8")
 
-# Substitui estado
+# Injeta atributo data-active
 html = html.replace(
     "{{analise}}",
     'data-active="true"' if st.session_state.menu == "analise" else ""
