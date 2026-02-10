@@ -1,26 +1,25 @@
 /* ================================
    SIDEBAR – BOTÕES ESTILO PILL
-   Com círculo inicial + gradiente
+   Toggle com círculo animado
    ================================ */
 
-/* Garante largura total do container */
+/* Container do botão ocupa 100% */
 [data-testid="stSidebar"] .stButton {
     width: 100% !important;
 }
 
-/* BOTÃO BASE (todos) */
+/* BOTÃO BASE */
 [data-testid="stSidebar"] .stButton > button {
     position: relative;
     height: 56px;
+    width: 100%;
     padding-left: 64px;
     border-radius: 30px;
     font-weight: 600;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, filter 0.2s ease;
 }
 
-
-
-/* TEXTO DO BOTÃO */
+/* TEXTO */
 [data-testid="stSidebar"] .stButton > button > p {
     margin: 0 !important;
     color: white !important;
@@ -29,12 +28,12 @@
     text-align: left !important;
 }
 
-/* BOTÕES NÃO SELECIONADOS (CINZA) */
+/* ESTADO DESLIGADO (CINZA) */
 [data-testid="stSidebar"] .stButton > button[kind="secondary"] {
     background-color: #bfbfbf;
 }
 
-/* BOTÃO SELECIONADO (VERMELHO) */
+/* ESTADO LIGADO (VERMELHO + GRADIENTE) */
 [data-testid="stSidebar"] .stButton > button[kind="primary"] {
     background: linear-gradient(
         90deg,
@@ -45,6 +44,7 @@
     box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45) !important;
 }
 
+/* CÍRCULO (TOGGLE) */
 [data-testid="stSidebar"] .stButton > button::before {
     content: "";
     position: absolute;
@@ -56,34 +56,28 @@
     border-radius: 50%;
 
     background: #ffffff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 
     transform: translate(0, -50%);
-    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.3s ease;
 }
 
-/* HOVER – MOVIMENTO SUAVE */
-[data-testid="stSidebar"] .stButton > button:hover {
-    transform: translateX(6px);
-    filter: brightness(1.05);
-}
-
-/* CLIQUE – FEEDBACK TÁTIL */
-[data-testid="stSidebar"] .stButton > button:active {
-    transform: scale(0.97);
-}
-
+/* CÍRCULO – DESLIGADO (ESQUERDA) */
 [data-testid="stSidebar"] .stButton > button[kind="secondary"]::before {
     transform: translate(0, -50%);
 }
 
-[data-testid="stSidebar"] .stButton > button[kind="primary"] {
-    background-color: #d32f2f;
-}
-
+/* CÍRCULO – LIGADO (DIREITA) */
 [data-testid="stSidebar"] .stButton > button[kind="primary"]::before {
     transform: translate(64px, -50%);
-    box-shadow: 0 0 0 4px rgba(255,255,255,0.25),
-                0 6px 14px rgba(0,0,0,0.35);
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.25),
+        0 6px 14px rgba(0, 0, 0, 0.35);
 }
+
+/* HOVER (sem usar transform) */
+[data-testid="stSidebar"] .stButton > button:hover {
+    filter: brightness(1.08);
+}
+
