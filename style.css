@@ -1,62 +1,23 @@
-/* Container do radio */
-div[role="radiogroup"] {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+/* Container das tabs */
+div[data-testid="stTabs"] {
+    width: 100%;
 }
 
-/* Label geral */
-div[role="radiogroup"] label {
+/* Lista das abas */
+div[data-testid="stTabs"] > div:first-child {
+    display: flex;
     width: 100%;
-    cursor: pointer;
 }
 
-/* Botão (div interna real do Streamlit) */
-div[role="radiogroup"] label > div {
-    width: 100%;
-    height: 52px;
-
-    display: flex;
-    align-items: center;
-
-    background: #d6d6d6;
-    color: #ffffff;
-
-    padding: 0 64px 0 20px;
-    border-radius: 999px;
-
+/* Cada aba */
+div[data-testid="stTabs"] button {
+    flex: 1;                     /* DISTRIBUI IGUAL */
+    text-align: center;
+    justify-content: center;
     font-weight: 600;
-    position: relative;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Ativo */
-div[role="radiogroup"] input:checked + div {
-    background: #ef3b3b;
-    box-shadow: 0 0 22px rgba(239, 59, 59, 0.6);
-}
-
-/* Círculo à direita (toggle) */
-div[role="radiogroup"] label > div::after {
-    content: "";
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    background: #ffffff;
-}
-
-/* Remove QUALQUER radio/bolinha nativa */
-div[role="radiogroup"] input {
-    display: none;
+/* Aba ativa */
+div[data-testid="stTabs"] button[aria-selected="true"] {
+    border-bottom: 3px solid #ef3b3b;
 }
