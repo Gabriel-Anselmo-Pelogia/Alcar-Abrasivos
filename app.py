@@ -1,31 +1,53 @@
 import streamlit as st
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="Sistema Administrativo",
+    layout="wide"
+)
 
-# ===============================
-# CSS
-# ===============================
-with open("style.css", "r", encoding="utf-8") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# Título do sistema
+st.markdown("## Sistema Administrativo")
 
-# ===============================
-# SIDEBAR (MENU)
-# ===============================
-with st.sidebar:
+# Painel superior com 5 abas
+aba1, aba2, aba3, aba4, aba5 = st.tabs([
+    "Aba 01",
+    "Aba 02",
+    "Aba 03",
+    "Aba 04",
+    "Aba 05"
+])
 
-    # Widget REAL (controle de estado)
-    menu = st.radio(
-        "",
-        ["Análise de Dados", "Gerenciamento de Estoque"],
-        label_visibility="collapsed"
-    )
+# -------------------------
+# ABA 01
+# -------------------------
+with aba1:
+    st.subheader("Aba 01")
+    st.write("Conteúdo da Aba 01")
 
-# ===============================
-# CONTEÚDO
-# ===============================
-st.title("Dashboard")
+# -------------------------
+# ABA 02
+# -------------------------
+with aba2:
+    st.subheader("Aba 02")
+    st.write("Conteúdo da Aba 02")
 
-if menu == "Análise de Dados":
-    st.success("📊 Página de Análise de Dados")
-else:
-    st.info("📦 Página de Gerenciamento de Estoque")
+# -------------------------
+# ABA 03
+# -------------------------
+with aba3:
+    st.subheader("Aba 03")
+    st.write("Conteúdo da Aba 03")
+
+# -------------------------
+# ABA 04
+# -------------------------
+with aba4:
+    st.subheader("Aba 04")
+    st.write("Conteúdo da Aba 04")
+
+# -------------------------
+# ABA 05
+# -------------------------
+with aba5:
+    st.subheader("Aba 05")
+    st.write("Conteúdo da Aba 05")
