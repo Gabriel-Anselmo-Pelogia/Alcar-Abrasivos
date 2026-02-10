@@ -1,24 +1,32 @@
-/* Remove radio padrão */
+/* Container do radio */
 div[role="radiogroup"] {
-    display: none;
+    gap: 12px;
 }
 
-/* Botão custom */
-.menu-btn {
-    width: 100%;
+/* Cada opção */
+div[role="radiogroup"] label {
     background: #ef3b3b;
     color: white;
     padding: 14px;
-    margin: 12px 0;
     border-radius: 999px;
-    text-align: center;
     font-weight: 600;
+    cursor: pointer;
     box-shadow: 0 0 20px rgba(239, 59, 59, 0.5);
-    user-select: none;
+    transition: all 0.2s ease;
 }
 
-/* Ativo */
-.menu-btn.active {
+/* Hover */
+div[role="radiogroup"] label:hover {
+    box-shadow: 0 0 26px rgba(239, 59, 59, 0.8);
+}
+
+/* Opção selecionada */
+div[role="radiogroup"] input:checked + div {
     background: #d92b2b;
-    box-shadow: 0 0 28px rgba(239, 59, 59, 0.8);
+    box-shadow: 0 0 30px rgba(239, 59, 59, 0.9);
+}
+
+/* Esconde o círculo padrão */
+div[role="radiogroup"] input {
+    display: none;
 }
