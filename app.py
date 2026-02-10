@@ -2,41 +2,38 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-# -------------------------------
+# ===============================
 # CSS
-# -------------------------------
+# ===============================
 with open("style.css", "r", encoding="utf-8") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# -------------------------------
-# SIDEBAR
-# -------------------------------
+# ===============================
+# SIDEBAR (MENU)
+# ===============================
 with st.sidebar:
 
-    # Widget real (estado)
+    # Widget REAL (controle de estado)
     menu = st.radio(
         "",
         ["Análise de Dados", "Gerenciamento de Estoque"],
         label_visibility="collapsed"
     )
 
-    # Menu visual
-    active_analise = "active" if menu == "Análise de Dados" else ""
-    active_estoque = "active" if menu == "Gerenciamento de Estoque" else ""
-
+    # Visual customizado
     st.markdown(f"""
-    <div class="menu-btn {active_analise}">
+    <div class="menu-btn {'active' if menu == 'Análise de Dados' else ''}">
         Análise de Dados
     </div>
 
-    <div class="menu-btn {active_estoque}">
+    <div class="menu-btn {'active' if menu == 'Gerenciamento de Estoque' else ''}">
         Gerenciamento de Estoque
     </div>
     """, unsafe_allow_html=True)
 
-# -------------------------------
-# CONTEÚDO PRINCIPAL
-# -------------------------------
+# ===============================
+# CONTEÚDO
+# ===============================
 st.title("Dashboard")
 
 if menu == "Análise de Dados":
