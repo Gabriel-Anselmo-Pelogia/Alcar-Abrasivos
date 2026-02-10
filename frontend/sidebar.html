@@ -1,0 +1,58 @@
+<style>
+.toggle-btn {
+    position: relative;
+    width: 100%;
+    height: 56px;
+    margin-bottom: 12px;
+    padding-left: 64px;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+
+    background: #bfbfbf;
+    cursor: pointer;
+    user-select: none;
+
+    transition: background 0.35s ease, filter 0.2s ease;
+}
+
+.toggle-btn[data-active="true"] {
+    background: linear-gradient(90deg, #ef4444, #b91c1c);
+    box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45);
+}
+
+.toggle-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 8px;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+
+    transform: translateY(-50%);
+    transition: left 0.5s ease;
+}
+
+.toggle-btn[data-active="true"]::before {
+    left: calc(100% - 48px);
+}
+</style>
+
+<div class="toggle-btn {{analise}}" onclick="window.location.search='?toggle=analise'">
+    Análise de Dados
+</div>
+
+<div class="toggle-btn {{estoque}}" onclick="window.location.search='?toggle=estoque'">
+    Gerenciamento de Estoque
+</div>
+
