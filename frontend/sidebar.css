@@ -1,5 +1,5 @@
-<style>
-.toggle-btn {
+div[data-testid="stSidebar"] button {
+    all: unset;
     position: relative;
     width: 100%;
     height: 56px;
@@ -16,18 +16,16 @@
 
     background: #bfbfbf;
     cursor: pointer;
-    user-select: none;
-    text-decoration: none;
 
     transition: background 0.35s ease, filter 0.2s ease;
 }
 
-.toggle-btn[data-active="true"] {
+div[data-testid="stSidebar"] button.active {
     background: linear-gradient(90deg, #ef4444, #b91c1c);
     box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45);
 }
 
-.toggle-btn::before {
+div[data-testid="stSidebar"] button::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -36,27 +34,12 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-
     background: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 
     transform: translateY(-50%);
     transition: left 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.toggle-btn[data-active="true"]::before {
+div[data-testid="stSidebar"] button.active::before {
     left: calc(100% - 48px);
 }
-
-.toggle-btn:hover {
-    filter: brightness(1.08);
-}
-</style>
-
-<a href="?toggle=analise" class="toggle-btn" {{analise}}>
-    Análise de Dados
-</a>
-
-<a href="?toggle=estoque" class="toggle-btn" {{estoque}}>
-    Gerenciamento de Estoque
-</a>
