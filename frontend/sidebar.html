@@ -40,19 +40,24 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 
     transform: translateY(-50%);
-    transition: left 0.5s ease;
+    transition: left 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .toggle-btn[data-active="true"]::before {
     left: calc(100% - 48px);
 }
+
+.toggle-btn:hover {
+    filter: brightness(1.08);
+}
 </style>
 
-<div class="toggle-btn {{analise}}" onclick="window.location.search='?toggle=analise'">
+<div class="toggle-btn" {{analise}}
+     onclick="window.location.search='?toggle=analise'">
     Análise de Dados
 </div>
 
-<div class="toggle-btn {{estoque}}" onclick="window.location.search='?toggle=estoque'">
+<div class="toggle-btn" {{estoque}}
+     onclick="window.location.search='?toggle=estoque'">
     Gerenciamento de Estoque
 </div>
-
