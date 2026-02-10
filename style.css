@@ -1,6 +1,6 @@
 /* ================================
    SIDEBAR – BOTÕES ESTILO PILL
-   Toggle com círculo animado
+   Toggle real (liga / desliga)
    ================================ */
 
 [data-testid="stSidebar"] .stButton {
@@ -21,6 +21,7 @@
     justify-content: flex-start !important;
 
     transition: background 0.3s ease, filter 0.2s ease;
+    overflow: hidden;
 }
 
 /* TEXTO */
@@ -32,12 +33,12 @@
     text-align: left !important;
 }
 
-/* DESLIGADO (CINZA) */
+/* DESLIGADO */
 [data-testid="stSidebar"] .stButton > button[kind="secondary"] {
     background-color: #bfbfbf;
 }
 
-/* LIGADO (VERMELHO) */
+/* LIGADO */
 [data-testid="stSidebar"] .stButton > button[kind="primary"] {
     background: linear-gradient(90deg, #ef4444, #b91c1c) !important;
     box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45) !important;
@@ -47,35 +48,36 @@
 [data-testid="stSidebar"] .stButton > button::before {
     content: "";
     position: absolute;
-    left: 8px;
     top: 50%;
+    left: 8px;
 
     width: 40px;
     height: 40px;
     border-radius: 50%;
 
     background: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 
-    transform: translate(0, -50%);
-    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform: translateY(-50%);
+    transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.3s ease;
 }
 
-/* CÍRCULO – OFF (ESQUERDA) */
+/* OFF → esquerda */
 [data-testid="stSidebar"] .stButton > button[kind="secondary"]::before {
-    transform: translate(0, -50%);
+    left: 8px;
 }
 
-/* CÍRCULO – ON (DIREITA) */
+/* ON → direita (posição REAL) */
 [data-testid="stSidebar"] .stButton > button[kind="primary"]::before {
-    transform: translate(64px, -50%);
+    left: calc(100% - 48px);
     box-shadow:
-        0 0 0 4px rgba(255, 255, 255, 0.25),
-        0 6px 14px rgba(0, 0, 0, 0.35);
+        0 0 0 4px rgba(255,255,255,0.25),
+        0 6px 14px rgba(0,0,0,0.35);
 }
 
 /* HOVER */
 [data-testid="stSidebar"] .stButton > button:hover {
     filter: brightness(1.08);
 }
+
