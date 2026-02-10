@@ -1,8 +1,15 @@
-[data-testid="stSidebar"] .menu-btn {
+/* Container de cada item */
+.menu-item {
+    position: relative;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/* Botão visual */
+.menu-btn {
     position: relative;
     width: 100%;
     height: 56px;
-    margin-bottom: 12px;
     padding-left: 64px;
 
     display: flex;
@@ -14,18 +21,17 @@
     color: white;
 
     background: #bfbfbf;
-    cursor: pointer;
-    border: none;
-
     transition: background 0.35s ease, box-shadow 0.35s ease;
 }
 
-[data-testid="stSidebar"] .menu-btn.active {
+/* Ativo */
+.menu-btn.active {
     background: linear-gradient(90deg, #ef4444, #b91c1c);
     box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45);
 }
 
-[data-testid="stSidebar"] .menu-btn::before {
+/* Bolinha */
+.menu-btn::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -40,12 +46,12 @@
     transition: left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-[data-testid="stSidebar"] .menu-btn.active::before {
+.menu-btn.active::before {
     left: calc(100% - 48px);
 }
 
-/* Esconde o botão real do Streamlit, mas mantém clicável */
-[data-testid="stSidebar"] div.stButton > button {
+/* Botão Streamlit invisível, mas clicável */
+.menu-item button {
     position: absolute;
     inset: 0;
     opacity: 0;
