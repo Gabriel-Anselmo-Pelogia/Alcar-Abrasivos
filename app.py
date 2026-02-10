@@ -1,63 +1,56 @@
 import streamlit as st
 
-# 1. Configuração da página
-st.set_page_config(page_title="Sistema Alcar", layout="wide")
+# ================================
+# CONFIGURAÇÃO DA PÁGINA
+# ================================
+st.set_page_config(
+    page_title="Sistema",
+    layout="wide"
+)
 
-# 2. Carregar o CSS Externo
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# ================================
+# ESTADO GLOBAL
+# ================================
+if "menu" not in st.session_state:
+    st.session_state.menu = "analise"
 
-local_css("style.css")
+# ================================
+# CAPTURA DO CLIQUE VIA QUERY PARAM
+# ================================
+params = st.query_params
+if "toggle" in params:
+    st.session_state.menu = params["toggle"]
 
-# 3. Inicializar o estado da página (Session State)
-if 'menu_option' not in st.session_state:
-    st.session_state.menu_option = 'Análise de Dados'
+# ================================
+# FUNÇÃO DO TOGGLE (SEGURA)
+# ================================
+def toggle_button(label: str, value: str):
+    ativo = st.session_state.menu == value
 
-# 4. Criar a Barra Lateral
+    html = (
+        f"<div class='toggle-btn' "
+        f"data-active='{str(ativo).lower()}' "
+        f"onclick=\"window.location.search='?toggle={value}'\">"
+        f"<span>{label}</span>"
+        f"</div>"
+    )
+
+    st.markdown(html, unsafe_allow_html=True)
+
+# ================================
+# SIDEBAR
+# ================================
 with st.sidebar:
-    st.markdown("### 🏢 Menu Principal")
-    st.write("---")
+    toggle_button("Análise de Dados", "analise")
+    toggle_button("Gerenciamento de Estoque", "estoque")
 
-    menu_items = {
-        "Análise de Dados": "📊",
-        "Gerenciamento de Estoque": "📦",
-        "Saídas": "🚚",
-        "Pendências": "⏳",
-        "Abertura de PV": "📝"
-    }
+# ================================
+# CONTEÚDO PRINCIPAL
+# ================================
+st.markdown("## Conteúdo")
 
-    for label, icon in menu_items.items():
-        is_active = st.session_state.menu_option == label
+if st.session_state.menu == "analise":
+    st.success("Você está em **Análise de Dados**")
+elif st.session_state.menu == "estoque":
+    st.info("Você está em **Gerenciamento de Estoque**")
 
-        col = st.sidebar.columns([1])[0]
-
-        with col:
-            if st.button(
-                f"{icon}  {label}",
-                key=label,
-                type="primary" if is_active else "secondary",
-                use_container_width=True
-            ):
-                st.session_state.menu_option = label
-                st.rerun()
-
-# 5. Lógica de Conteúdo Central
-opcao = st.session_state.menu_option
-
-if opcao == "Análise de Dados":
-    st.title("📊 Análise de Dados")
-    st.info("Aqui entrarão seus gráficos e indicadores.")
-    
-elif opcao == "Gerenciamento de Estoque":
-    st.title("📦 Gerenciamento de Estoque")
-    st.success("Tabela de estoque pronta para edição.")
-
-elif opcao == "Saídas":
-    st.title("🚚 Controle de Saídas")
-
-elif opcao == "Pendências":
-    st.title("⏳ Lista de Pendências")
-
-elif opcao == "Abertura de PV":
-    st.title("📝 Formulário de PV")
