@@ -1,53 +1,31 @@
-/* Wrapper do botão */
-div[data-testid="stSidebar"] div.stButton {
-    width: 100%;
-}
-
-/* Botão real */
-div[data-testid="stSidebar"] div.stButton > button {
+[data-testid="stSidebar"] .menu-btn {
     position: relative;
     width: 100%;
     height: 56px;
+    margin-bottom: 12px;
     padding-left: 64px;
 
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 
     border-radius: 30px;
-    border: none;
-
     font-size: 14px;
     font-weight: 600;
     color: white;
 
     background: #bfbfbf;
     cursor: pointer;
+    border: none;
 
-    transition:
-        background 0.35s ease,
-        box-shadow 0.35s ease,
-        filter 0.2s ease;
+    transition: background 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Texto */
-div[data-testid="stSidebar"] div.stButton > button > div {
-    color: white;
-}
-
-/* Hover */
-div[data-testid="stSidebar"] div.stButton > button:hover {
-    filter: brightness(1.08);
-}
-
-/* Estado ativo */
-div[data-testid="stSidebar"] div.stButton > button.active {
+[data-testid="stSidebar"] .menu-btn.active {
     background: linear-gradient(90deg, #ef4444, #b91c1c);
     box-shadow: 0 10px 25px rgba(185, 28, 28, 0.45);
 }
 
-/* Círculo */
-div[data-testid="stSidebar"] div.stButton > button::before {
+[data-testid="stSidebar"] .menu-btn::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -56,15 +34,12 @@ div[data-testid="stSidebar"] div.stButton > button::before {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-
     background: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 
     transform: translateY(-50%);
-    transition: left 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Círculo ativo */
-div[data-testid="stSidebar"] div.stButton > button.active::before {
+[data-testid="stSidebar"] .menu-btn.active::before {
     left: calc(100% - 48px);
 }
