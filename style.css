@@ -1,23 +1,43 @@
-/* Container das tabs */
-div[data-testid="stTabs"] {
-    width: 100%;
+/* REMOVE padding lateral padrão */
+.block-container {
+    padding-top: 0rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
 }
 
-/* Lista das abas */
+/* Container geral das tabs */
+div[data-testid="stTabs"] {
+    width: 100%;
+    background-color: #111827; /* fundo navbar */
+    padding: 0 40px;
+}
+
+/* Barra das abas */
 div[data-testid="stTabs"] > div:first-child {
     display: flex;
     width: 100%;
+    border-bottom: 1px solid #1f2937;
 }
 
 /* Cada aba */
 div[data-testid="stTabs"] button {
-    flex: 1;                     /* DISTRIBUI IGUAL */
-    text-align: center;
-    justify-content: center;
+    flex: 1;
+    height: 64px;
+    color: #d1d5db;
+    font-size: 15px;
     font-weight: 600;
+    justify-content: center;
+    border: none;
+    background: transparent;
 }
 
 /* Aba ativa */
 div[data-testid="stTabs"] button[aria-selected="true"] {
-    border-bottom: 3px solid #ef3b3b;
+    color: #ffffff;
+    border-bottom: 3px solid #ef4444;
+}
+
+/* Hover */
+div[data-testid="stTabs"] button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
