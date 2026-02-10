@@ -20,17 +20,6 @@ with st.sidebar:
         label_visibility="collapsed"
     )
 
-    # Visual customizado
-    st.markdown(f"""
-    <div class="menu-btn {'active' if menu == 'Análise de Dados' else ''}">
-        Análise de Dados
-    </div>
-
-    <div class="menu-btn {'active' if menu == 'Gerenciamento de Estoque' else ''}">
-        Gerenciamento de Estoque
-    </div>
-    """, unsafe_allow_html=True)
-
 # ===============================
 # CONTEÚDO
 # ===============================
